@@ -12,9 +12,12 @@
 
 int main (int argc, char **argv)
 {
-    int **arr,fixed,solution;
+    int **arr,i;
+    int **fixed;
+    int **solution;
     srand(argc);
-    initialize();
+
+    initialize(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
 
     /*int i,j;
     char* command;

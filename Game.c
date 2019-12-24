@@ -69,7 +69,7 @@ int in_block(int **arr,int dimension,int block_start_row,int block_start_col, in
 }
 
 int is_valid(int **arr,int dimension,int row,int col, int value,int row_per_block,int col_per_block){
-    if(in_block(arr,dimension,row-row%3,col-col%3,value,row_per_block,col_per_block)||in_row(arr[row],dimension,value)||in_col(arr[col],dimension,value)){
+    if(in_block(arr,dimension,row-row%row_per_block,col-col%col_per_block,value,row_per_block,col_per_block)||in_row(arr[row],dimension,value)||in_col(arr[col],dimension,value)){
         return 0;
     }
     return 1;
@@ -84,8 +84,7 @@ int check_end_cond(){
 }
 
 void set(int **arr,int dimension,int **fixed,int x,int y,int z,int row_per_block,int col_per_block) {
-    if(arr[x][y]==z)
-        return;
+
     if (fixed[x][y] == 1) {
         printf("Error: cell is fixed\n");
         return;
@@ -94,6 +93,8 @@ void set(int **arr,int dimension,int **fixed,int x,int y,int z,int row_per_block
         arr[x][y]=0;
         return;
     }
+    if(arr[x][y]==z)
+        return;
     if (is_valid(arr, dimension, x, y, z,row_per_block,col_per_block)) {
         arr[x][y] = z;
         if (check_end_cond(arr)) {
