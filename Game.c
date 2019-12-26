@@ -2,9 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Game.h"
-#include "Parser.h"
-#include "Solver.h"
-#include "MainAux.h"
+
 
 void print_board(int **board,int **fixed,int dimension,int row_per_block,int col_per_block)
 {

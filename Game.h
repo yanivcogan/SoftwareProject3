@@ -1,5 +1,10 @@
-#ifndef SODUKO_GAME_H
-#define SODUKO_GAME_H
+//
+// Created by LENOVO on 25/12/2019.
+//
+
+#ifndef SOFTWAREPROJECT3_GAME_H
+#define SOFTWAREPROJECT3_GAME_H
+
 
 void print_board(int **board,int **fixed,int dimension,int row_per_block,int col_per_block);
 int in_row(const int *arr,int dimension, int value);
@@ -15,4 +20,5 @@ void free_arrays(int **arr, int dimension);
 void free_resources(int **arr,int** solution,int** fixed, int dimension);
 void exit_game(int** arr,int** solution, int** fixed,int dimension);
 void restart();
-#endif //SODUKO_GAME_H
+
+#endif //SOFTWAREPROJECT3_GAME_H

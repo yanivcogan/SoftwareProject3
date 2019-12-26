@@ -76,6 +76,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/LENOVO/CLionProjects/SoftwareProject3/Game.h">
+			<Option target="SoftwareProject3"/>
+		</Unit>
+		<Unit filename="C:/Users/LENOVO/CLionProjects/SoftwareProject3/MainAux.h">
+			<Option target="SoftwareProject3"/>
+		</Unit>
+		<Unit filename="C:/Users/LENOVO/CLionProjects/SoftwareProject3/Parser.h">
+			<Option target="SoftwareProject3"/>
+		</Unit>
+		<Unit filename="C:/Users/LENOVO/CLionProjects/SoftwareProject3/Solver.h">
+			<Option target="SoftwareProject3"/>
+		</Unit>
 		<Unit filename="C:/Users/LENOVO/CLionProjects/SoftwareProject3/main.c">
 			<Option target="SoftwareProject3"/>
 		</Unit>
