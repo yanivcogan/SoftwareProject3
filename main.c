@@ -5,33 +5,27 @@
 #include "Parser.h"
 #include "Solver.h"
 #include "MainAux.h"
+
 #define DIMENSION 9
 #define ROWPERBLOCK 3
 #define COLPERBLOCK 3
 
 
-int main ()
-{
+int main() {
     int **arr;
     int **fixed;
     int **solution;
     int i;
-    char* command;
+    char *command;
 
     //srand(argc);
-    first_init(arr,fixed,solution,DIMENSION);
+    first_init(arr, fixed, solution, DIMENSION);
 
+    initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
 
-  initialize(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
-
-
-   /* while(1){
+    /* while(1){
         get_next_command(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
     }*/
 
     return 0;
 }
-
-
-
-
