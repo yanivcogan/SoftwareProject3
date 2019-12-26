@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include "Game.h"
+#include "Solver.h"
+#include "MainAux.h"
 
-
-void print_board(int **board, int **fixed, int dimension, int row_per_block, int col_per_block) {
+void print_board(int board[9][9], int fixed[9][9] ,int dimension, int row_per_block, int col_per_block) {
     int index_row, index_col, index_block, blocks_per_row;
     blocks_per_row = dimension / col_per_block;
 
@@ -15,6 +16,7 @@ void print_board(int **board, int **fixed, int dimension, int row_per_block, int
             printf("| ");
             for (index_col = 0; index_col < col_per_block; index_col++) {
                 if (board[index_row][index_col + col_per_block * index_block] != 0) {
+
                     if (fixed[index_row][index_col + col_per_block * index_block] != 0)
                         printf(".%d ", board[index_row][index_col + col_per_block * index_block]);
                     else
@@ -40,16 +42,16 @@ int in_row(const int *arr, int dimension, int value) {
     return 0;
 }
 
-int in_col(const int *arr, int dimension, int value) {
+int in_col(const int arr[9][9], int dimension,int col, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
-        if (arr[index] == value)
+        if (arr[index][col] == value)
             return 1;
     }
     return 0;
 }
 
-int in_block(int **arr, int dimension, int block_start_row, int block_start_col, int value, int row_per_block,
+int in_block(int arr[9][9], int dimension, int block_start_row, int block_start_col, int value, int row_per_block,
              int col_per_block) {
     int row, col;
     for (row = 0; row < row_per_block; row++) {
@@ -61,9 +63,12 @@ int in_block(int **arr, int dimension, int block_start_row, int block_start_col,
     return 0;
 }
 
-int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_block, int col_per_block) {
-    if (in_block(arr, dimension, row - row % row_per_block, col - col % col_per_block, value, row_per_block,
-                 col_per_block) || in_row(arr[row], dimension, value) || in_col(arr[col], dimension, value)) {
+int is_valid(int arr[9][9], int dimension, int row, int col, int value, int row_per_block, int col_per_block) {
+if(arr[row][col]==value) {
+    return 1;
+}
+    if ((in_block(arr, dimension, row - row % 3, col - col % 3, value, row_per_block,
+                 col_per_block)) || (in_row(arr[row], dimension, value)) ||( in_col(arr, dimension,col, value)) ){
         return 0;
     }
     return 1;
@@ -77,7 +82,7 @@ int check_end_cond() {
 
 }
 
-void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block) {
+void set(int arr[9][9], int dimension, int fixed[9][9], int x, int y, int z, int row_per_block, int col_per_block) {
 
     if (fixed[x][y] == 1) {
         printf("Error: cell is fixed\n");
@@ -87,8 +92,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
         arr[x][y] = 0;
         return;
     }
-    if (arr[x][y] == z)
-        return;
+
     if (is_valid(arr, dimension, x, y, z, row_per_block, col_per_block)) {
         arr[x][y] = z;
         if (check_end_cond(arr)) {
@@ -101,10 +105,9 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
     }
 }
 
-void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block) {
-    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block)) {
+void validate(int arr[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block) {
+    if (!random_solve_soduko(arr, solution, dimension, row_per_block, col_per_block)) {
         printf("Validation failed: board is unsolvable\n");
-        //    update_solvable(arr,dimension);
     } else {
         printf("Validation passed: board is solvable\n");
     }
@@ -136,8 +139,8 @@ void exit_game(int **arr, int **solution, int **fixed, int dimension) {
     exit(0);
 }
 
-void restart() {
-
+void restart(int arr[9][9],int fixed[9][9],int solution[9][9],int dimension,int row_per_block,int col_per_block) {
+initialize(arr,fixed,solution,dimension,row_per_block,col_per_block);
 }
 
 

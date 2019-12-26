@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SoftwareProject3.dir/Game.c.obj"
+  "CMakeFiles/SoftwareProject3.dir/MainAux.c.obj"
+  "CMakeFiles/SoftwareProject3.dir/Parser.c.obj"
+  "CMakeFiles/SoftwareProject3.dir/Solver.c.obj"
   "CMakeFiles/SoftwareProject3.dir/main.c.obj"
   "SoftwareProject3.exe"
   "SoftwareProject3.exe.manifest"

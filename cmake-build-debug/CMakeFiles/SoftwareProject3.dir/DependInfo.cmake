@@ -4,6 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "C:/Users/LENOVO/CLionProjects/SoftwareProject3/Game.c" "C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir/Game.c.obj"
+  "C:/Users/LENOVO/CLionProjects/SoftwareProject3/MainAux.c" "C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir/MainAux.c.obj"
+  "C:/Users/LENOVO/CLionProjects/SoftwareProject3/Parser.c" "C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir/Parser.c.obj"
+  "C:/Users/LENOVO/CLionProjects/SoftwareProject3/Solver.c" "C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir/Solver.c.obj"
   "C:/Users/LENOVO/CLionProjects/SoftwareProject3/main.c" "C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
