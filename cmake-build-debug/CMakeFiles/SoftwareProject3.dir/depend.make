@@ -3,6 +3,7 @@
 
 CMakeFiles/SoftwareProject3.dir/Game.c.obj: ../Game.c
 CMakeFiles/SoftwareProject3.dir/Game.c.obj: ../Game.h
+CMakeFiles/SoftwareProject3.dir/Game.c.obj: ../MainAux.h
 CMakeFiles/SoftwareProject3.dir/Game.c.obj: ../Solver.h
 
 CMakeFiles/SoftwareProject3.dir/MainAux.c.obj: ../Game.h

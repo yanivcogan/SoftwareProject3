@@ -70,6 +70,7 @@ void initialize(int arr[9][9], int fixed[9][9], int solution[9][9], int dimensio
         } else {
 
             fix_random_cells(fixed, dimension, num_fix);
+            random_solve_soduko(arr,solution,dimension,row_per_block,col_per_block);
             print_board(solution,fixed,dimension,row_per_block,col_per_block);
             break;
         }
