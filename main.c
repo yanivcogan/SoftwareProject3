@@ -12,20 +12,22 @@
 
 
 int main() {
-    int **arr;
-    int **fixed;
-    int **solution;
+
     int i;
     char *command;
+    time_t t;
+    srand((unsigned) time(&t));
+    int **arr= (int **) malloc(DIMENSION * sizeof(int *));
+    first_init(arr,DIMENSION);
+    int **fixed= (int **) malloc(DIMENSION * sizeof(int *));
+    first_init(fixed,DIMENSION);
+    int **solution= (int **) malloc(DIMENSION * sizeof(int *));
+    first_init(solution,DIMENSION);
 
-    //srand(argc);
-    first_init(arr, fixed, solution, DIMENSION);
-
-    initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
-
-    while(1){
+    initialize((int(*)[9]) arr,(int(*)[9]) fixed,(int(*)[9]) solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
+   /*  while(1){
         get_next_command(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
-    }
+    }*/
 
     return 0;
 }
