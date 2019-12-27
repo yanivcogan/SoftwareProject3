@@ -1,3 +1,0 @@
-C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/SoftwareProject3.dir
-C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/LENOVO/CLionProjects/SoftwareProject3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
