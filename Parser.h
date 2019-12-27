@@ -6,5 +6,5 @@
 #define SOFTWAREPROJECT3_PARSER_H
 
 
-
+int get_next_command(int **arr, int **fixed, int **solution, int dimension, int rowsPerBlock, int colsPerBlock);
 #endif //SOFTWAREPROJECT3_PARSER_H

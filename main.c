@@ -23,9 +23,9 @@ int main() {
 
     initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
 
-    /* while(1){
+    while(1){
         get_next_command(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
-    }*/
+    }
 
     return 0;
 }
