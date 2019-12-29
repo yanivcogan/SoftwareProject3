@@ -106,7 +106,7 @@ void set(int arr[9][9], int dimension, int fixed[9][9], int x, int y, int z, int
 }
 
 void validate(int arr[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block) {
-    if (!random_solve_soduko(arr, solution, dimension, row_per_block, col_per_block)) {
+    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block,1)) {
         printf("Validation failed: board is unsolvable\n");
     } else {
         printf("Validation passed: board is solvable\n");
