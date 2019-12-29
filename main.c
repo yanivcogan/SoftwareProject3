@@ -16,8 +16,8 @@ int main(int argc, char* argv[]) {
     int i;
     char *command;
 
-    //time_t  t;
-   // srand((unsigned) time(&t));
+    time_t  t;
+   srand((unsigned) time(&t));
   // srand((unsigned )argv[0]);
     int **arr= (int **) malloc(DIMENSION * sizeof(int *));
     first_init(arr,DIMENSION);
