@@ -13,15 +13,12 @@ void fail_memory(char *message) {
 
 void first_init(int **arr,int dimension) {
     int i;
-
     for (i = 0; i < dimension; i++) {
         arr[i] = (int *) malloc(dimension * sizeof(int));
-        if (!arr[i] )
+        if (!arr[i])
             fail_memory("initialize");
     }
-
 }
-
 
 void fix_random_cells(int fixed[9][9], int dimension, int num_fix) {
     int num = 0, row_fix, col_fix;
@@ -33,7 +30,6 @@ void fix_random_cells(int fixed[9][9], int dimension, int num_fix) {
             num++;
         }
     }
-
 }
 
 int check_valid_num_fix(int num_fix) {
@@ -58,7 +54,6 @@ void initialize(int arr[9][9], int fixed[9][9], int solution[9][9], int dimensio
     int is_ok, num_fix, is_end,i,j;
    // first_init(arr,fixed,solution,dimension);
     reset_boards(arr, fixed, solution, dimension);
-
     while (1) {
         printf("Enter the number of cells to fill [0-80]:\n");
         is_end = scanf("%d", &num_fix);
@@ -68,10 +63,8 @@ void initialize(int arr[9][9], int fixed[9][9], int solution[9][9], int dimensio
         if (!is_ok) {
             printf("Error: invalid number of cells to fill (should be between 0 and 80)\n");
         } else {
-
             fix_random_cells(fixed, dimension, num_fix);
             random_solve_soduko(arr,solution,dimension,row_per_block,col_per_block);
-            print_board(solution,fixed,dimension,row_per_block,col_per_block);
             break;
         }
     }

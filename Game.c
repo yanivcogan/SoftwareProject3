@@ -140,11 +140,5 @@ void exit_game(int **arr, int **solution, int **fixed, int dimension) {
 }
 
 void restart(int arr[9][9],int fixed[9][9],int solution[9][9],int dimension,int row_per_block,int col_per_block) {
-initialize(arr,fixed,solution,dimension,row_per_block,col_per_block);
+    initialize(arr, fixed, solution, dimension, row_per_block, col_per_block);
 }
-
-
-
-
-
-
