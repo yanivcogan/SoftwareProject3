@@ -57,9 +57,9 @@ void reset_boards(int arr[9][9], int fixed[9][9], int solution[9][9], int dimens
 }
 
 void initialize(int arr[9][9], int fixed[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block) {
-    int is_ok, num_fix, is_end,i,j;
+    int is_ok, num_fix, is_end;
    // first_init(arr,fixed,solution,dimension);
-
+printf("sas");
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {

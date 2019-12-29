@@ -11,13 +11,13 @@
 #define COLPERBLOCK 3
 
 
-int main(int argc, char* argv[]) {
+int main() {
 
-    int i;
-    char *command;
+   // int i;
+    //char *command;
 
     time_t  t;
-   srand((unsigned) time(&t));
+    srand((unsigned) time(&t));
   // srand((unsigned )argv[0]);
     int **arr= (int **) malloc(DIMENSION * sizeof(int *));
     first_init(arr,DIMENSION);
