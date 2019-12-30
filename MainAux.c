@@ -67,10 +67,14 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
 
     while (1) {
         printf("Enter the number of cells to fill [0-80]:\n");
-
         is_end = scanf("%d", &num_fix);
         if (is_end != 1)
             exit(0);
+        /*empty stdin buffer*/
+        int c;
+        do{
+            c = getchar();
+        }while(c != '\n');
         is_ok = check_valid_num_fix(num_fix);
         if (!is_ok) {
             printf("Error: invalid number of cells to fill (should be between 0 and 80)\n");

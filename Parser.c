@@ -31,7 +31,7 @@ struct CommandSyntax commands[COMMAND_COUNT] = {
         {"exit", 0, EXIT}
 };
 struct Command* get_next_command(){
-    char (* str)[MAX_COMMAND_LENGTH]; // the input string
+    char str [MAX_COMMAND_LENGTH]; // the input string
     char* command; // the substring representing the command type
     char* param; // the substring of the command representing the currently processed parameter;
     int castParam; // the currently processed param after a str to int casting
@@ -39,14 +39,15 @@ struct Command* get_next_command(){
     int expectedParamCount = 0; // the number of parameters we expect for the selected command
     int missingParams = 0; // whether or not a sufficient
     int i = 0;
+    char* test;
     printf("(delete me before posting) input command\n");
-    /*empty stdin buffer*/
-    int c;
-    do{
-        c = getchar();
-    }while(c != EOF && c != '\n');
     /*read command*/
-    fgets(str,MAX_COMMAND_LENGTH,stdin);
+    test=fgets(str,MAX_COMMAND_LENGTH,stdin);
+    if(test == NULL){
+        currMove.type=EXIT;
+        return &currMove;
+    }
+    strtok(str, "\n");
     /* extract command */
     command = strtok(str, DELIMITER);
     /*look for command in commands list*/
@@ -80,7 +81,6 @@ struct Command* get_next_command(){
         printf(INVALID_COMMAND_ERROR);
         return &invalidMove;
     }
-    printf("command: %s\n", command);
     return &currMove;
 }
 

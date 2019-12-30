@@ -5,7 +5,7 @@
 #include "Solver.h"
 #include "MainAux.h"
 
-void print_board(int **board, int **fixed ,int **solution,int dimension, int row_per_block, int col_per_block) {
+void print_board(int **board, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
     int index_row, index_col, index_block, blocks_per_row;
     blocks_per_row = dimension / col_per_block;
 
@@ -22,15 +22,11 @@ void print_board(int **board, int **fixed ,int **solution,int dimension, int row
                     else
                         printf(" %d ", board[index_row][index_col + col_per_block * index_block]);
                 } else {
-
-                        printf("   ", board[index_row][index_col + col_per_block * index_block]);
-
+                    printf("   ", board[index_row][index_col + col_per_block * index_block]);
                 }
             }
         }
-
         printf("|\n");
-
     }
     printf("----------------------------------\n");
 }
@@ -44,7 +40,7 @@ int in_row(const int *arr, int dimension, int value) {
     return 0;
 }
 
-int in_col(const int **arr, int dimension,int col, int value) {
+int in_col(const int **arr, int dimension, int col, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
         if (arr[index][col] == value)
@@ -66,11 +62,11 @@ int in_block(int **arr, int dimension, int block_start_row, int block_start_col,
 }
 
 int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_block, int col_per_block) {
-if(arr[row][col]==value) {
-    return 1;
-}
+    if (arr[row][col] == value) {
+        return 1;
+    }
     if ((in_block(arr, dimension, row - row % 3, col - col % 3, value, row_per_block,
-                 col_per_block)) || (in_row(arr[row], dimension, value)) ||( in_col(arr, dimension,col, value)) ){
+                  col_per_block)) || (in_row(arr[row], dimension, value)) || (in_col(arr, dimension, col, value))) {
         return 0;
     }
     return 1;
@@ -80,15 +76,15 @@ void end_state() {
 
 }
 
-int check_end_cond(int **arr,int dimension) {
-int index_row,index_col;
-for(index_row=0; index_row<dimension; index_row++){
-    for(index_col=0; index_col<dimension; index_col++){
-        if(arr[index_row][index_col]==0)
-            return 0;
+int check_end_cond(int **arr, int dimension) {
+    int index_row, index_col;
+    for (index_row = 0; index_row < dimension; index_row++) {
+        for (index_col = 0; index_col < dimension; index_col++) {
+            if (arr[index_row][index_col] == 0)
+                return 0;
+        }
     }
-}
-return 1;
+    return 1;
 }
 
 void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block) {
@@ -104,7 +100,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
 
     if (is_valid(arr, dimension, x, y, z, row_per_block, col_per_block)) {
         arr[x][y] = z;
-        if (check_end_cond(arr,dimension)) {
+        if (check_end_cond(arr, dimension)) {
             printf("Puzzle solved successfully\n");
             end_state();
         }
@@ -115,7 +111,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
 }
 
 void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block) {
-    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block,1)) {
+    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block, 1)) {
         printf("Validation failed: board is unsolvable\n");
     } else {
         printf("Validation passed: board is solvable\n");
@@ -123,8 +119,7 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
 }
 
 void hint(int **arr, int **solution, int dimension, int x, int y) {
-
-    printf("Hint: set cell to%d\n", solution[x][y]);
+    printf("Hint: set cell to %d\n", solution[x][y]);
 }
 
 void free_arrays(int **arr, int dimension) {
@@ -148,8 +143,8 @@ void exit_game(int **arr, int **solution, int **fixed, int dimension) {
     exit(0);
 }
 
-void restart(int **arr,int **fixed,int **solution,int dimension,int row_per_block,int col_per_block) {
-initialize(arr,fixed,solution,dimension,row_per_block,col_per_block);
+void restart(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
+    initialize(arr, fixed, solution, dimension, row_per_block, col_per_block);
 }
 
 
