@@ -1,1 +1,5 @@
 /cmake-build-debug/
+cmake-build-debug/
+cmake-build-debug/*
+cmake-build-debug/CMakeFiles/SoftwareProject3.dir/progress.make
+cmake-build-debug/Makefile
