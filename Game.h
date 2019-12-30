@@ -5,26 +5,26 @@
 #ifndef SOFTWAREPROJECT3_GAME_H
 #define SOFTWAREPROJECT3_GAME_H
 
-void restart(int arr[9][9],int fixed[9][9],int solution[9][9],int dimension,int row_per_block,int col_per_block);
+void restart(int **arr,int **fixed,int **solution,int dimension,int row_per_block,int col_per_block);
 
-void print_board(int board[9][9], int fixed[9][9], int dimension, int row_per_block, int col_per_block);
+void print_board(int **board, int **fixed,int **solution, int dimension, int row_per_block, int col_per_block);
 
-int in_row(const int arr[9], int dimension, int value);
+int in_row(const int *arr, int dimension, int value);
 
-int in_col(const int arr[9][9], int dimension,int col, int value);
+int in_col(const int **arr, int dimension,int col, int value);
 
-int in_block(int arr[9][9], int dimension, int block_start_row, int block_start_col, int value, int row_per_block,
+int in_block(int **arr, int dimension, int block_start_row, int block_start_col, int value, int row_per_block,
              int col_per_block);
 
-int is_valid(int arr[9][9], int dimension, int row, int col, int value, int row_per_block, int col_per_block);
+int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_block, int col_per_block);
 
 void end_state();
 
 int check_end_cond();
 
-void set(int arr[9][9], int dimension, int fixed[9][9], int x, int y, int z, int row_per_block, int col_per_block);
+void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block);
 
-void validate(int arr[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block);
+void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block);
 
 void hint(int **arr, int **solution, int dimension, int x, int y);
 

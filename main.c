@@ -12,24 +12,46 @@
 
 
 int main() {
-
-   // int i;
     //char *command;
-
+    struct Command *currCommand;
+    int commandType;
+    int* params;
+    setbuf(stdout, 0);
     time_t  t;
+    int **arr,**fixed,**solution;
     srand((unsigned) time(&t));
-  // srand((unsigned )argv[0]);
-    int **arr= (int **) malloc(DIMENSION * sizeof(int *));
-    first_init(arr,DIMENSION);
-    int **fixed= (int **) malloc(DIMENSION * sizeof(int *));
-    first_init(fixed,DIMENSION);
-    int **solution= (int **) malloc(DIMENSION * sizeof(int *));
-    first_init(solution,DIMENSION);
+   arr= first_init(DIMENSION);
+   fixed= first_init(DIMENSION);
+   solution= first_init(DIMENSION);
 
-    initialize((int(*)[9]) arr,(int(*)[9]) fixed,(int(*)[9]) solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
-   /*  while(1){
-        get_next_command(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
-    }*/
+    initialize( arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
+    //print_board(arr,fixed,DIMENSION,ROWPERBLOCK, COLPERBLOCK);
+    while(1){
+        print_board(arr,fixed,solution,DIMENSION,ROWPERBLOCK, COLPERBLOCK);
+        currCommand = get_next_command();
+        commandType = get_move_type(currCommand);
+        params = get_move_params(currCommand);
+        if(get_move_type(currCommand)==0){
+            continue;
+        }
+        switch(commandType){
+            case 1:
+                set(arr,DIMENSION,fixed,params[0], params[1], params[2],ROWPERBLOCK, COLPERBLOCK);
+                break;
+            case 2:
+                hint(arr,solution,DIMENSION,params[0], params[1]);
+                break;
+            case 3:
+                validate(arr,solution,DIMENSION,ROWPERBLOCK, COLPERBLOCK);
+                break;
+            case 4:
+                restart(arr,fixed,solution,DIMENSION,ROWPERBLOCK,COLPERBLOCK);
+                break;
+            case 5:
+                exit_game(arr,solution,fixed,DIMENSION);
+                return 0;
+        }
+    }
 
-    return 0;
+
 }

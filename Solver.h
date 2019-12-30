@@ -5,8 +5,8 @@
 #ifndef SOFTWAREPROJECT3_SOLVER_H
 #define SOFTWAREPROJECT3_SOLVER_H
 
-int random_solve(int solution[9][9], int dimension, int row_per_block, int col_per_block);
-int deter_solve(int solution[9][9], int dimension, int row_per_block, int col_per_block);
-int solve_soduko(int arr[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block,int is_random);
+int random_solve(int **solution, int dimension, int row_per_block, int col_per_block);
+int deter_solve(int **solution, int dimension, int row_per_block, int col_per_block);
+int solve_soduko(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,int is_random);
 
 #endif //SOFTWAREPROJECT3_SOLVER_H

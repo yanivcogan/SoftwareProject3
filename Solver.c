@@ -4,7 +4,7 @@
 #include "MainAux.h"
 #include "Game.h"
 
-int deter_solve(int solution[9][9], int dimension, int row_per_block, int col_per_block){
+int deter_solve(int **solution, int dimension, int row_per_block, int col_per_block){
     int row, col,num;
 
     for (row = 0; row < dimension; row++) {
@@ -32,13 +32,15 @@ int deter_solve(int solution[9][9], int dimension, int row_per_block, int col_pe
 }
 
 
-int random_solve(int solution[9][9], int dimension, int row_per_block, int col_per_block){
+int random_solve(int **solution, int dimension, int row_per_block, int col_per_block){
     int row, col,num,random;
     int valid=0;
+    int *arr;
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
             if (solution[row][col] == 0) {
-                int arr[9]={};
+                //int arr[9]={};
+                arr=(int*)calloc(dimension,sizeof(int));
                 for (num = 1; num <= dimension; num++) {
                     if (is_valid(solution, dimension, row, col, num, row_per_block, col_per_block)) {
                         arr[valid] = num;
@@ -59,6 +61,7 @@ int random_solve(int solution[9][9], int dimension, int row_per_block, int col_p
                         valid--;
                     }
                 }
+                free(arr);
                 return 0;
             }
         }
@@ -67,7 +70,7 @@ int random_solve(int solution[9][9], int dimension, int row_per_block, int col_p
     return 1;
 }
 
-int solve_soduko(int arr[9][9], int solution[9][9], int dimension, int row_per_block, int col_per_block,int is_random) {
+int solve_soduko(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,int is_random) {
     int row, col;
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
