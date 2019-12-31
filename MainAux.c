@@ -7,7 +7,6 @@
 
 void fail_memory(char *message) {
     printf("Error: %s has failed\n", message);
-    printf("failmem");
     exit(0);
 }
 
@@ -18,8 +17,7 @@ int** first_init(int dimension) {
     for (i = 0; i < dimension; i++) {
         arr[i] = (int *) malloc(dimension * sizeof(int));
         if (!arr[i] ) {
-            printf("error first init");
-            fail_memory("initialize");
+            fail_memory("malloc");
         }
     }
     return arr;
@@ -61,15 +59,14 @@ void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
 
 void initialize(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
     int is_ok, num_fix, is_end;
-   // first_init(arr,fixed,solution,dimension);
-
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {
         printf("Enter the number of cells to fill [0-80]:\n");
         is_end = scanf("%d", &num_fix);
-        if (is_end != 1)
-            exit(0);
+        if (is_end != 1) {
+            fail_memory("scanf");
+        }
         /*empty stdin buffer*/
         int c;
         do{

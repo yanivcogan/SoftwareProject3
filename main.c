@@ -12,8 +12,8 @@
 
 
 int main(int argc, char *argv[]) {
-    int seed = argv[0];
-    //char *command;
+    int seed = argv[1];
+    int is_over=0;
     struct Command *currCommand;
     int commandType;
     int *params;
@@ -37,19 +37,23 @@ int main(int argc, char *argv[]) {
         }
         switch (commandType) {
             case 1:
-                set(arr, DIMENSION, fixed, params[0] - 1, params[1] - 1, params[2], ROWPERBLOCK, COLPERBLOCK);
+
+                set(arr, DIMENSION, fixed, params[0] - 1, params[1] - 1, params[2], ROWPERBLOCK, COLPERBLOCK,
+                    &is_over);
+
                 break;
             case 2:
-                hint(arr, solution, DIMENSION, params[0] - 1, params[1] - 1);
+                hint(arr, solution, DIMENSION, params[0] - 1, params[1] - 1, is_over);
                 break;
             case 3:
-                validate(arr, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
+                validate(arr, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK,&is_over);
                 break;
             case 4:
-                restart(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
+                restart(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK,&is_over);
                 break;
             case 5:
                 exit_game(arr, solution, fixed, DIMENSION);
+                is_over=1;
                 return 0;
         }
     }

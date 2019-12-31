@@ -41,6 +41,9 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
             if (solution[row][col] == 0) {
                 //int arr[9]={};
                 arr=(int*)calloc(dimension,sizeof(int));
+                if(!arr){
+                    fail_memory("calloc");
+                }
                 for (num = 1; num <= dimension; num++) {
                     if (is_valid(solution, dimension, row, col, num, row_per_block, col_per_block)) {
                         arr[valid] = num;
