@@ -38,7 +38,6 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
             if (solution[row][col] == 0) {
-                /*int arr[9]={};*/
                 arr=(int*)calloc(dimension,sizeof(int));
                 if(!arr){
                     fail_memory("calloc");
@@ -74,15 +73,27 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
 
 int solve_soduko(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,int is_random) {
     int row, col;
+    int **temp=first_init(dimension);
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
-            solution[row][col] = arr[row][col];
+            temp[row][col] = arr[row][col];
         }
 
     }
 
     if(is_random) {
-        return random_solve(solution, dimension, row_per_block, col_per_block);
+        if(random_solve(temp, dimension, row_per_block, col_per_block)) {
+            copy_arrays(temp, solution,dimension);
+            free(temp);
+            return 1;
+        }
     }
-    return deter_solve(solution, dimension, row_per_block, col_per_block);
+    else if(deter_solve(temp,dimension,row_per_block,col_per_block))
+    {
+    copy_arrays(temp,solution,dimension);
+    free(temp);
+    return 1;
+    }
+    free(temp);
+    return  0;
 }

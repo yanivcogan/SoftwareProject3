@@ -3,6 +3,17 @@
 #include "Solver.h"
 #include "Game.h"
 
+void copy_arrays(int **copy, int**paste,int dimension)
+{
+    int index_row,index_col;
+    for(index_row=0; index_row<dimension; index_row++){
+        for(index_col=0; index_col<dimension; index_col++)
+        {
+            paste[index_row][index_col]=copy[index_row][index_col];
+        }
+    }
+}
+
 void fail_memory(char *message) {
     printf("Error: %s has failed\n", message);
     exit(0);
@@ -10,8 +21,11 @@ void fail_memory(char *message) {
 
 int** first_init(int dimension) {
     int i;
-    int **arr;
-    arr= (int **) malloc(dimension * sizeof(int *));
+    int **arr=(int **) malloc(dimension * sizeof(int *));
+    if(!arr)
+    {
+        fail_memory("malloc");
+    }
     for (i = 0; i < dimension; i++) {
         arr[i] = (int *) malloc(dimension * sizeof(int));
         if (!arr[i] ) {
