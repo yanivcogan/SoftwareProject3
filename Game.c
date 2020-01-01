@@ -5,7 +5,7 @@
 #include "Solver.h"
 #include "MainAux.h"
 
-void print_board(int **board, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
+void print_board(int **board, int **fixed, int dimension, int row_per_block, int col_per_block) {
     int index_row, index_col, index_block, blocks_per_row;
     blocks_per_row = dimension / col_per_block;
 
@@ -31,7 +31,7 @@ void print_board(int **board, int **fixed, int **solution, int dimension, int ro
     printf("----------------------------------\n");
 }
 
-int in_row(const int *arr, int dimension, int value) {
+int in_row(int *arr, int dimension, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
         if (arr[index] == value)
@@ -40,7 +40,7 @@ int in_row(const int *arr, int dimension, int value) {
     return 0;
 }
 
-int in_col(const int **arr, int dimension, int col, int value) {
+int in_col(int **arr, int dimension, int col, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
         if (arr[index][col] == value)
@@ -49,7 +49,7 @@ int in_col(const int **arr, int dimension, int col, int value) {
     return 0;
 }
 
-int in_block(int **arr, int dimension, int block_start_row, int block_start_col, int value, int row_per_block,
+int in_block(int **arr, int block_start_row, int block_start_col, int value, int row_per_block,
              int col_per_block) {
     int row, col;
     for (row = 0; row < row_per_block; row++) {
@@ -65,7 +65,7 @@ int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_
     if (arr[row][col] == value) {
         return 1;
     }
-    if ((in_block(arr, dimension, row - row % 3, col - col % 3, value, row_per_block,
+    if ((in_block(arr, row - row % 3, col - col % 3, value, row_per_block,
                   col_per_block)) || (in_row(arr[row], dimension, value)) || (in_col(arr, dimension, col, value))) {
         return 0;
     }
@@ -127,7 +127,7 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
     }
 }
 
-void hint(int **arr, int **solution, int dimension, int x, int y, int is_over) {
+void hint(int **solution, int x, int y, int is_over) {
     if(!is_over) {
         printf("Hint: set cell to %d\n", solution[x][y]);
     } else
@@ -159,9 +159,3 @@ void restart(int **arr, int **fixed, int **solution, int dimension, int row_per_
     *is_over=0;
     initialize(arr, fixed, solution, dimension, row_per_block, col_per_block);
 }
-
-
-
-
-
-

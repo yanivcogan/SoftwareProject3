@@ -1,7 +1,3 @@
-//
-// Created by LENOVO on 25/12/2019.
-//
-
 #ifndef SOFTWAREPROJECT3_MAINAUX_H
 #define SOFTWAREPROJECT3_MAINAUX_H
 
@@ -16,4 +12,4 @@ void fix_random_cells(int** arr,int **fixed,int** solution, int dimension, int n
 
 int check_valid_num_fix(int num_fix);
 
-#endif //SOFTWAREPROJECT3_MAINAUX_H
+#endif

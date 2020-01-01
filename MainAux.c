@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "Solver.h"
-#include "MainAux.h"
-#include "Game.h"
 
 void fail_memory(char *message) {
     printf("Error: %s has failed\n", message);
@@ -58,7 +55,7 @@ void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
 }
 
 void initialize(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
-    int is_ok, num_fix, is_end;
+    int is_ok, num_fix, is_end, c;
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {
@@ -68,7 +65,6 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
             fail_memory("scanf");
         }
         /*empty stdin buffer*/
-        int c;
         do{
             c = getchar();
         }while(c != '\n');
@@ -78,7 +74,7 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
         } else {
             solve_soduko(arr,solution,dimension,row_per_block,col_per_block,1);
             fix_random_cells(arr,fixed,solution, dimension, num_fix);
-            //print_board(arr,fixed,solution,dimension,row_per_block,col_per_block);
+            /*print_board(arr,fixed,solution,dimension,row_per_block,col_per_block);*/
             break;
         }
     }

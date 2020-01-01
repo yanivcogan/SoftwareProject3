@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include "Solver.h"
 #include "MainAux.h"
 #include "Game.h"
 
@@ -39,7 +37,7 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
             if (solution[row][col] == 0) {
-                //int arr[9]={};
+                /*int arr[9]={};*/
                 arr=(int*)calloc(dimension,sizeof(int));
                 if(!arr){
                     fail_memory("calloc");
