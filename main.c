@@ -11,7 +11,7 @@
 
 
 int main(int argc, char *argv[]) {
-    int seed = (int)*argv[1];
+    int seed = atoi(argv[1]);
     int is_over=0;
     struct Command *currCommand;
     int commandType;

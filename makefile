@@ -7,7 +7,7 @@ $(EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@
 main.o: main.c Game.h Parser.h MainAux.h
 	$(CC) $(COMP_FLAG) -c $*.c
-MainAux.o: MainAux.c Solver.h
+MainAux.o: MainAux.c Solver.h Game.h
 	$(CC) $(COMP_FLAG) -c $*.c
 Parser.o: Parser.c Parser.h
 	$(CC) $(COMP_FLAG) -c $*.c

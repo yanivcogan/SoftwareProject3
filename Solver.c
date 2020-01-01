@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "MainAux.h"
 #include "Game.h"
 
@@ -85,4 +86,3 @@ int solve_soduko(int **arr, int **solution, int dimension, int row_per_block, in
     }
     return deter_solve(solution, dimension, row_per_block, col_per_block);
 }
-

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Solver.h"
+#include "Game.h"
 
 void fail_memory(char *message) {
     printf("Error: %s has failed\n", message);
@@ -25,8 +26,8 @@ int** first_init(int dimension) {
 void fix_random_cells(int **arr,int **fixed,int **solution, int dimension, int num_fix) {
     int num = 0, row_fix, col_fix;
     while (num < num_fix) {
-        row_fix = rand() % dimension;
         col_fix = rand() % dimension;
+        row_fix = rand() % dimension;
         if (fixed[row_fix][col_fix] == 0) {
             fixed[row_fix][col_fix] = 1;
             arr[row_fix][col_fix]=solution[row_fix][col_fix];
