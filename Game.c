@@ -120,7 +120,7 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
         printf("Error: invalid command\n");
         return;
     }
-    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block, 1)) {
+    if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block, 0)) {
         printf("Validation failed: board is unsolvable\n");
     } else {
         printf("Validation passed: board is solvable\n");

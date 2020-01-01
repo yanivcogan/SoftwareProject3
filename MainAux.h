@@ -1,6 +1,7 @@
 #ifndef SOFTWAREPROJECT3_MAINAUX_H
 #define SOFTWAREPROJECT3_MAINAUX_H
 
+void copy_arrays(int **copy, int**paste,int dimension);
 
 void fail_memory(char *message);
 
