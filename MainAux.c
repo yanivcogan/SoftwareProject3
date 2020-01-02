@@ -80,7 +80,7 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {
-        printf("Enter the number of cells to fill [0-80]:\n");
+        printf("Please enter the number of cells to fill [0-80]:\n");
         is_end = scanf("%d", &num_fix);
         if (is_end != 1) {
             fail_memory("scanf");
