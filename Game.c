@@ -87,7 +87,7 @@ int check_end_cond(int **arr, int dimension) {
     return 1;
 }
 
-void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block, int *is_over) {
+void set(int **arr, int dimension, int **fixed, int y, int x, int z, int row_per_block, int col_per_block, int *is_over) {
     if(*is_over)
     {
         printf("Error: invalid command\n");
@@ -127,7 +127,7 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
     }
 }
 
-void hint(int **solution, int x, int y, int is_over) {
+void hint(int **solution, int y, int x, int is_over) {
     if(!is_over) {
         printf("Hint: set cell to %d\n", solution[x][y]);
     } else
