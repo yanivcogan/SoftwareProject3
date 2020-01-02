@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
     solution = first_init(DIMENSION);
 
     initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
+    empty_buffer();
     /*print_board(arr,fixed,DIMENSION,ROWPERBLOCK, COLPERBLOCK);*/
     while (1) {
         print_board(arr, fixed, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
@@ -41,19 +42,16 @@ int main(int argc, char *argv[]) {
         }
         switch (commandType) {
             case 1:
-
-                set(arr, DIMENSION, fixed, params[0] - 1, params[1] - 1, params[2], ROWPERBLOCK, COLPERBLOCK,
-                    &is_over);
-
+                set(arr, DIMENSION, fixed, params[0] - 1, params[1] - 1, params[2], ROWPERBLOCK, COLPERBLOCK, &is_over);
                 break;
             case 2:
-                hint(solution, params[0] - 1, params[1] - 1, is_over);
+                hint(solution, params[0] - 1, params[1] - 1);
                 break;
             case 3:
-                validate(arr, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK,&is_over);
+                validate(arr, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
                 break;
             case 4:
-                restart(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK,&is_over);
+                restart(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK, &is_over);
                 break;
             case 5:
                 exit_game(arr, solution, fixed, DIMENSION);

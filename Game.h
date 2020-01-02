@@ -18,11 +18,11 @@ void end_state();
 
 int check_end_cond();
 
-void set(int **arr, int dimension, int **fixed, int y, int x, int z, int row_per_block, int col_per_block, int *pInt);
+void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block, int *pInt);
 
-void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,const int *is_valid);
+void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block);
 
-void hint(int **solution, int y, int x, int i);
+void hint(int **solution, int x, int y);
 
 void free_arrays(int **arr, int dimension);
 
