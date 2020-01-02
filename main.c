@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
     initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
     empty_buffer();
-    /*print_board(arr,fixed,DIMENSION,ROWPERBLOCK, COLPERBLOCK);*/
+    /* run the game */
     while (1) {
         print_board(arr, fixed, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
         currCommand = get_next_command(is_over);

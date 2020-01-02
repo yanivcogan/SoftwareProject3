@@ -4,7 +4,7 @@
 #include "Game.h"
 #include "Solver.h"
 #include "MainAux.h"
-
+/* print board's status */
 void print_board(int **board, int **fixed, int dimension, int row_per_block, int col_per_block) {
     int index_row, index_col, index_block, blocks_per_row;
     blocks_per_row = dimension / col_per_block;
@@ -30,7 +30,7 @@ void print_board(int **board, int **fixed, int dimension, int row_per_block, int
     }
     printf("----------------------------------\n");
 }
-
+/* validation of value in row */
 int in_row(int *arr, int dimension, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
@@ -39,7 +39,7 @@ int in_row(int *arr, int dimension, int value) {
     }
     return 0;
 }
-
+/* validation of value in column */
 int in_col(int **arr, int dimension, int col, int value) {
     int index;
     for (index = 0; index < dimension; index++) {
@@ -48,7 +48,7 @@ int in_col(int **arr, int dimension, int col, int value) {
     }
     return 0;
 }
-
+/* validation of value in block */
 int in_block(int **arr, int block_start_row, int block_start_col, int value, int row_per_block,
              int col_per_block) {
     int row, col;
@@ -60,7 +60,7 @@ int in_block(int **arr, int block_start_row, int block_start_col, int value, int
     }
     return 0;
 }
-
+/* check validation of value */
 int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_block, int col_per_block) {
     if (arr[row][col] == value) {
         return 1;
@@ -71,11 +71,11 @@ int is_valid(int **arr, int dimension, int row, int col, int value, int row_per_
     }
     return 1;
 }
-
+/* board is full */
 void end_state(int *is_over) {
 *is_over=1;
 }
-
+/* check if board is full */
 int check_end_cond(int **arr, int dimension) {
     int index_row, index_col;
     for (index_row = 0; index_row < dimension; index_row++) {
@@ -86,8 +86,8 @@ int check_end_cond(int **arr, int dimension) {
     }
     return 1;
 }
-
-void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block, int *is_over) {
+/* set square to input value if value is legal*/
+void set(int **arr, int dimension, int **fixed, int y, int x, int z, int row_per_block, int col_per_block, int *is_over) {
     if (fixed[x][y] == 1) {
         printf("Error: cell is fixed\n");
         return;
@@ -108,7 +108,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
         return;
     }
 }
-
+/* check whether board is solvable */
 void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block) {
     if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block, 0)) {
         printf("Validation failed: board is unsolvable\n");
@@ -116,11 +116,11 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
         printf("Validation passed: board is solvable\n");
     }
 }
-
-void hint(int **solution, int x, int y) {
+/* hint for square's value */
+void hint(int **solution, int y, int x) {
     printf("Hint: set cell to %d\n", solution[x][y]);
 }
-
+/* free memory */
 void free_arrays(int **arr, int dimension) {
     int index;
     for (index = 0; index < dimension; index++) {
@@ -135,13 +135,13 @@ void free_resources(int **arr, int **solution, int **fixed, int dimension) {
     free_arrays(fixed, dimension);
 }
 
-
+/* exit the game */
 void exit_game(int **arr, int **solution, int **fixed, int dimension) {
     printf("Existing...\n");
     free_resources(arr, solution, fixed, dimension);
     exit(0);
 }
-
+/* start a new game */
 void restart(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block,int *is_over) {
     *is_over=0;
     initialize(arr, fixed, solution, dimension, row_per_block, col_per_block);
