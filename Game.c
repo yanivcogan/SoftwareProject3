@@ -88,11 +88,6 @@ int check_end_cond(int **arr, int dimension) {
 }
 
 void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per_block, int col_per_block, int *is_over) {
-    if(*is_over)
-    {
-        printf("Error: invalid command\n");
-        return;
-    }
     if (fixed[x][y] == 1) {
         printf("Error: cell is fixed\n");
         return;
@@ -114,12 +109,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
     }
 }
 
-void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,const int *is_over) {
-    if(*is_over)
-    {
-        printf("Error: invalid command\n");
-        return;
-    }
+void validate(int **arr, int **solution, int dimension, int row_per_block, int col_per_block) {
     if (!solve_soduko(arr, solution, dimension, row_per_block, col_per_block, 0)) {
         printf("Validation failed: board is unsolvable\n");
     } else {
@@ -127,11 +117,8 @@ void validate(int **arr, int **solution, int dimension, int row_per_block, int c
     }
 }
 
-void hint(int **solution, int x, int y, int is_over) {
-    if(!is_over) {
-        printf("Hint: set cell to %d\n", solution[x][y]);
-    } else
-        printf("Error: invalid command\n");
+void hint(int **solution, int x, int y) {
+    printf("Hint: set cell to %d\n", solution[x][y]);
 }
 
 void free_arrays(int **arr, int dimension) {
@@ -158,4 +145,5 @@ void exit_game(int **arr, int **solution, int **fixed, int dimension) {
 void restart(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block,int *is_over) {
     *is_over=0;
     initialize(arr, fixed, solution, dimension, row_per_block, col_per_block);
+    empty_buffer();
 }

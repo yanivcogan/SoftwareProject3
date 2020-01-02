@@ -19,6 +19,14 @@ void fail_memory(char *message) {
     exit(0);
 }
 
+void empty_buffer(){
+    int c;
+    /*empty stdin buffer*/
+    do{
+        c = getchar();
+    }while(c != '\n');
+}
+
 int** first_init(int dimension) {
     int i;
     int **arr=(int **) malloc(dimension * sizeof(int *));
@@ -48,7 +56,6 @@ void fix_random_cells(int **arr,int **fixed,int **solution, int dimension, int n
             num++;
         }
     }
-
 }
 
 int check_valid_num_fix(int num_fix) {
@@ -56,7 +63,6 @@ int check_valid_num_fix(int num_fix) {
         return 0;
     return 1;
 }
-
 
 void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
     int index_row, index_col;
@@ -70,7 +76,7 @@ void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
 }
 
 void initialize(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
-    int is_ok, num_fix, is_end, c;
+    int is_ok, num_fix, is_end;
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {
@@ -79,10 +85,6 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
         if (is_end != 1) {
             fail_memory("scanf");
         }
-        /*empty stdin buffer*/
-        do{
-            c = getchar();
-        }while(c != '\n');
         is_ok = check_valid_num_fix(num_fix);
         if (!is_ok) {
             printf("Error: invalid number of cells to fill (should be between 0 and 80)\n");
