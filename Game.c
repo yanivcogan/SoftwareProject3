@@ -99,6 +99,7 @@ void set(int **arr, int dimension, int **fixed, int x, int y, int z, int row_per
 
     if (is_valid(arr, dimension, x, y, z, row_per_block, col_per_block)) {
         arr[x][y] = z;
+        print_board(arr, fixed, dimension, row_per_block, col_per_block);
         if (check_end_cond(arr, dimension)) {
             printf("Puzzle solved successfully\n");
             end_state(is_over);

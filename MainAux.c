@@ -91,7 +91,7 @@ void initialize(int **arr, int **fixed, int **solution, int dimension, int row_p
         } else {
             solve_soduko(arr,solution,dimension,row_per_block,col_per_block,1);
             fix_random_cells(arr,fixed,solution, dimension, num_fix);
-            /*print_board(arr,fixed,solution,dimension,row_per_block,col_per_block);*/
+            print_board(arr, fixed, dimension, row_per_block, col_per_block);
             break;
         }
     }

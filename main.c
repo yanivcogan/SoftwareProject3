@@ -31,9 +31,7 @@ int main(int argc, char *argv[]) {
 
     initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
     empty_buffer();
-    /*print_board(arr,fixed,DIMENSION,ROWPERBLOCK, COLPERBLOCK);*/
     while (1) {
-        print_board(arr, fixed, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
         currCommand = get_next_command(is_over);
         commandType = get_move_type(currCommand);
         params = get_move_params(currCommand);
