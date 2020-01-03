@@ -33,15 +33,17 @@ struct Command* get_next_command(int is_over){
     int missingParams = 0; /* whether or not a sufficient*/
     int i = 0;
     char* test;
-    /*read command*/
-    test=fgets(str,MAX_COMMAND_LENGTH,stdin);
-    if( test == NULL || *test == '^'){
-        currMove.type=EXIT;
-        return &currMove;
+    command=NULL;
+    while(command==NULL){
+        /*read command*/
+        test=fgets(str,MAX_COMMAND_LENGTH,stdin);
+        if( test == NULL || *test == '^'){
+            currMove.type=EXIT;
+            return &currMove;
+        }
+        /* extract command */
+        command = strtok(str, DELIMITER);
     }
-    /*strtok(str, "\n");*/
-    /* extract command */
-    command = strtok(str, DELIMITER);
     /*look for command in commands list*/
     for(i = 0; i < COMMAND_COUNT; i++){
         if(strcmp(commands[i].name, command) == 0){
