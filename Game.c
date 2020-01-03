@@ -94,6 +94,7 @@ void set(int **arr, int dimension, int **fixed, int y, int x, int z, int row_per
     }
     if (z == 0) {
         arr[x][y] = 0;
+        print_board(arr, fixed, dimension, row_per_block, col_per_block);
         return;
     }
 
