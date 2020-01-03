@@ -138,7 +138,7 @@ void free_resources(int **arr, int **solution, int **fixed, int dimension) {
 
 /* exit the game */
 void exit_game(int **arr, int **solution, int **fixed, int dimension) {
-    printf("Existing...\n");
+    printf("Exiting...\n");
     free_resources(arr, solution, fixed, dimension);
     exit(0);
 }
