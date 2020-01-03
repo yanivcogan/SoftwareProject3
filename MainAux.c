@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Solver.h"
 #include "Game.h"
-
+/* copy board values to other board */
 void copy_arrays(int **copy, int**paste,int dimension)
 {
     int index_row,index_col;
@@ -13,7 +13,7 @@ void copy_arrays(int **copy, int**paste,int dimension)
         }
     }
 }
-
+/* unexcepted error */
 void fail_memory(char *message) {
     printf("Error: %s has failed\n", message);
     exit(0);
@@ -26,7 +26,7 @@ void empty_buffer(){
         c = getchar();
     }while(c != '\n');
 }
-
+/* allocatins for arrays */
 int** first_init(int dimension) {
     int i;
     int **arr=(int **) malloc(dimension * sizeof(int *));
@@ -44,7 +44,7 @@ int** first_init(int dimension) {
 
 }
 
-
+/* choose randomize fixed squares */
 void fix_random_cells(int **arr,int **fixed,int **solution, int dimension, int num_fix) {
     int num = 0, row_fix, col_fix;
     while (num < num_fix) {
@@ -57,13 +57,13 @@ void fix_random_cells(int **arr,int **fixed,int **solution, int dimension, int n
         }
     }
 }
-
+/* check input for number of fixed cells */
 int check_valid_num_fix(int num_fix) {
     if (num_fix < 0 || num_fix > 80)
         return 0;
     return 1;
 }
-
+/* reset board to start a new game */
 void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
     int index_row, index_col;
     for (index_row = 0; index_row < dimension; index_row++) {
@@ -74,13 +74,13 @@ void reset_boards(int **arr, int **fixed, int **solution, int dimension) {
         }
     }
 }
-
+/* prepare board for game */
 void initialize(int **arr, int **fixed, int **solution, int dimension, int row_per_block, int col_per_block) {
     int is_ok, num_fix, is_end;
     reset_boards(arr, fixed, solution, dimension);
 
     while (1) {
-        printf("Enter the number of cells to fill [0-80]:\n");
+        printf("Please enter the number of cells to fill [0-80]:\n");
         is_end = scanf("%d", &num_fix);
         if (is_end != 1) {
             fail_memory("scanf");

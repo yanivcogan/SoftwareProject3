@@ -33,7 +33,6 @@ struct Command* get_next_command(int is_over){
     int missingParams = 0; /* whether or not a sufficient*/
     int i = 0;
     char* test;
-    /*printf("(delete me before posting) input command\n");*/
     /*read command*/
     test=fgets(str,MAX_COMMAND_LENGTH,stdin);
     if( test == NULL || *test == '^'){

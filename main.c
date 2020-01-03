@@ -31,6 +31,7 @@ int main(int argc, char *argv[]) {
 
     initialize(arr, fixed, solution, DIMENSION, ROWPERBLOCK, COLPERBLOCK);
     empty_buffer();
+    /* run the game */
     while (1) {
         currCommand = get_next_command(is_over);
         commandType = get_move_type(currCommand);

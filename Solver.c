@@ -3,6 +3,7 @@
 #include "MainAux.h"
 #include "Game.h"
 
+/* deterministic solution for current board */
 int deter_solve(int **solution, int dimension, int row_per_block, int col_per_block){
     int row, col,num;
 
@@ -30,7 +31,7 @@ int deter_solve(int **solution, int dimension, int row_per_block, int col_per_bl
     return 1;
 }
 
-
+/* randomize solution for current board */
 int random_solve(int **solution, int dimension, int row_per_block, int col_per_block){
     int row, col,num,random;
     int valid=0;
@@ -38,6 +39,7 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
     for (row = 0; row < dimension; row++) {
         for (col = 0; col < dimension; col++) {
             if (solution[row][col] == 0) {
+                /* array of legal values for current square*/
                 arr=(int*)calloc(dimension,sizeof(int));
                 if(!arr){
                     fail_memory("calloc");
@@ -70,7 +72,7 @@ int random_solve(int **solution, int dimension, int row_per_block, int col_per_b
 
     return 1;
 }
-
+/* determine which sudoku solve method type to use */
 int solve_soduko(int **arr, int **solution, int dimension, int row_per_block, int col_per_block,int is_random) {
     int row, col;
     int **temp=first_init(dimension);
